@@ -1,0 +1,43 @@
+@import "partials/reset";
+@import "vendor/weathericons";
+@import "materialize/materialize";
+
+/* Custom SCSS Goes Here... */
+
+html, body {
+  height: 100%;
+}
+
+#test {
+  height: 100%;
+  width: 100%;
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 0 !important;
+
+  .day {  
+    height: 100%;
+  }
+}
+
+
+
+
+/* Media Queries */
+@media #{$small-and-down} {
+  // styles for small screens and down
+}
+@media #{$medium-and-up} {
+  // styles for medium screens and larger
+}
+@media #{$medium-and-down} {
+  // styles for medium screens and down
+  html, body {
+    overflow: visible;
+  }
+}
+@media #{$large-and-up} {
+  // styles for large screens and up
+}
