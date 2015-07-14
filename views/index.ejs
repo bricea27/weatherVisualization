@@ -2,12 +2,29 @@
 
 <!-- head -->
 <% include partials/header %>
-<div id="test" class="blue lighten-1">
+
+<div class="preloader-wrapper big active" id="spinner">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
 </div>
-<!-- <ul class="row wrapper" id="forecast">
+
+<div class="valign-wrapper" id="weather-info">
+  <div class="valign">
+    <h1 id="weatherSummary"></h1>
+  </div>
+</div>
+
+<ul class="row wrapper" id="forecast">
 
 
-</ul><!-- end wrapper --> -->
+</ul><!-- end wrapper -->
 
 
 

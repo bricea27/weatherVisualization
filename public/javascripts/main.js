@@ -18,16 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
     xhr.addEventListener('load', function(e) {
       var data = xhr.responseText;
       var parsed = JSON.parse(data);
-      
+      document.getElementById("spinner").style.display="none";
       var forecast = document.getElementById("forecast");
-      
-      var minTemp = parsed.daily.data[0].apparentTemperatureMin;
-      var maxTemp = parsed.daily.data[0].apparentTemperatureMax;
-
-      // //tempGradient(minTemp, maxTemp, forecast);
-      // var precip = parsed.currently.precipIntensity;
-      // precipitation(precip, forecast);
-      // tempClass(parsed.currently.apparentTemperature, forecast);
 
       var twelveHour = parsed.hourly.data.splice(0, 12);
       twelveHour.forEach(function(hour){
@@ -37,12 +29,15 @@ document.addEventListener("DOMContentLoaded", function() {
         precipitation(hour.precipIntensity, li);
         forecast.appendChild(li);
         console.log(timeConversion(hour.time));
+        console.log(hour.summary);
+        document.getElementById("weatherSummary").innerHTML = hour.summary;
       });
 
 
     });
     xhr.send();
   };
+
 
   //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
 
@@ -90,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(temp);
     } else if (temp <= 90) {
       elem.classList.add("darken-4");
-      console.log(temp);      
+      console.log(temp);
     } else {
       console.log(temp);
     }
@@ -98,10 +93,107 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function weatherClasses(tempData, precipInt, precipProb, elem) {
     var temp = Math.round(tempData);
-    
-    
 
-    
+    if (temp <= 10) {
+      elem.classList.add("lighten-5");
+      console.log(temp);
+    } else if (temp <= 20) {
+      elem.classList.add("lighten-4");
+      console.log(temp);
+    } else if (temp <= 30) {
+      elem.classList.add("lighten-3");
+      console.log(temp);
+    } else if (temp <= 40) {
+      elem.classList.add("lighten-2");
+      console.log(temp);
+    } else if (temp <= 50) {
+      elem.classList.add("lighten-1");
+      console.log(temp);
+    } else if (temp <= 60) {
+      elem.classList.add("darken-1");
+      console.log(temp);
+    } else if (temp <= 70) {
+      elem.classList.add("darken-2");
+      console.log(temp);
+    } else if (temp <= 80) {
+      elem.classList.add("darken-3");
+      console.log(temp);
+    } else if (temp <= 90) {
+      elem.classList.add("darken-4");
+      console.log(temp);
+    } else {
+      console.log(temp);
+    }
+
+    if (precipProb <= 0.1) {
+      elem.classList.add("pink");
+      console.log(precipProb);
+    } else if (precipProb <= 0.2) {
+      elem.classList.add("red");
+      console.log(precipProb);
+    } else if (precipProb <= 0.3) {
+      elem.classList.add("amber");
+      console.log(precipProb);
+    } else if (precipProb <= 0.4) {
+      elem.classList.add("orange");
+      console.log(precipProb);
+    } else if (precipProb <= 0.5) {
+
+      if (precipInt >= 0.02) {
+        elem.classList.add("orange");
+      }
+      else if (precipInt <= 0.1) {
+        console.log("light precip: " + precipInt);
+        precipIntensity = light
+      } else if (precipInt <= 0.4) {
+        console.log("mod precip: " + precipInt);
+        precipIntensity = light
+      } else {
+        console.log("heavy precip: " + precipInt);
+        precipIntensity = light
+      }
+
+      elem.classList.add("light-blue");
+      console.log(precipProb);
+    } else if (precipProb <= 0.6) {
+      elem.classList.add("blue");
+      console.log(precipProb);
+    } else if (precipProb <= 0.7) {
+      elem.classList.add("");
+      console.log(precipProb);
+    } else if (precipProb <= 0.8) {
+      elem.classList.add("darken-3");
+      console.log(precipProb);
+    } else if (precipProb <= 0.9) {
+      elem.classList.add("darken-4");
+      console.log(precipProb);
+    } else {
+      console.log(precipProb);
+    }
+
+
+
+
+    var precipIntensity;
+    if (precipInt >= 0.02) {
+      console.log("little to no: " + precipInt);
+      precipIntensity = none;
+    }
+    else if (precipInt <= 0.1) {
+      console.log("light precip: " + precipInt);
+      precipIntensity = light
+    } else if (precipInt <= 0.4) {
+      console.log("mod precip: " + precipInt);
+      precipIntensity = light
+    } else {
+      console.log("heavy precip: " + precipInt);
+      precipIntensity = light
+    }
+
+
+
+
+
   };
 
 
